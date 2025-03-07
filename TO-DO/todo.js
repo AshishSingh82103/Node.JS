@@ -29,6 +29,17 @@ const listTasks = () => {
 };
 
 // TODO: Remove task by index
+const removeTask = (index) => {
+    const tasks = loadTasks();
+  
+    if (index > 0 && index <= tasks.length) {
+      const removedTask = tasks.splice(index - 1, 1); // Remove task at the specified index
+      saveTasks(tasks);
+      console.log(`Task removed: ${removedTask[0].task}`);
+    } else {
+      console.log("Invalid index! Please provide a valid task number.");
+    }
+  };
 
 const command = process.argv[2];
 const argument = process.argv[3];
